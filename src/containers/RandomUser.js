@@ -7,7 +7,7 @@ class RandomUser extends Component {
   render() {
     const { container, text, button, buttonText } = styles;
     const { user, isFetching } = this.props.user;
-    console.log('This is User: ', user);
+
     return (
       <View style={container}>
         <Text style={text}>Redux App </Text>
@@ -16,14 +16,16 @@ class RandomUser extends Component {
         </TouchableHighlight>
         {isFetching && <Text>Loading </Text>}
         {user.length
-          ? user.map((user, index) => {
+          ? user.map((_user, index) => {
               return (
                 <View key={index}>
                   <Text>
-                    {' '}Gender: {user.gender}{' '}
+                    Gender: {_user.gender}
                   </Text>
                   <Text>
-                    {' '}Name: {user.name}{' '}
+                    Name:
+                    {`${_user.name.title} ${_user.name.first} ${_user.name
+                      .last}`}
                   </Text>
                 </View>
               );
