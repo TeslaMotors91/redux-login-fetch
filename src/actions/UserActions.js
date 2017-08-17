@@ -1,19 +1,15 @@
+import _ from 'lodash';
+import { Actions } from 'react-native-router-flux';
 import { FETCH_USER, FETCH_USER_SUCCESS, FETCH_USER_FAILURE } from './types';
 
 export function fetchUserFromAPI() {
   return dispatch => {
     dispatch(getUser());
 
-    fetch('https://randomuser.me/api/')
+    fetch('https://randomuser.me/api/?results=10')
       .then(response => response.json())
       .then(responseJson => {
-        console.log('Been There...');
-        dispatch(getUserSuccess(responseJson.results[0]));
-        console.log('Done That...');
-        console.log('Root Object', responseJson);
-        console.log(responseJson.results);
-        console.log(responseJson.results.gender);
-        console.log(responseJson.results.name);
+        dispatch(getUserSuccess(responseJson.results));
       })
       .catch(error => {
         console.error(error);

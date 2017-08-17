@@ -1,11 +1,11 @@
 import React from 'react';
-import { Scene, Router } from 'react-native-router-flux';
+import { Scene, Router, Actions } from 'react-native-router-flux';
 import LoginForm from './containers/LoginForm';
-import NewScreenOne from './containers/NewScreenOne';
+//import NewScreenOne from './containers/NewScreenOne';
 import RandomUser from './containers/RandomUser';
+import ShowUser from './containers/ShowUser';
 
 const RouterComponent = () => {
-  console.log('hey!!');
   return (
     <Router sceneStyle={{ paddingTop: 65 }}>
       <Scene key="root">
@@ -20,11 +20,7 @@ const RouterComponent = () => {
             title="Random User"
             initial
           />
-          <Scene
-            key="newScreenOne"
-            component={NewScreenOne}
-            title="New Screen One"
-          />
+          <Scene key="showUser" component={ShowUser} title="Show User" />
         </Scene>
       </Scene>
     </Router>
