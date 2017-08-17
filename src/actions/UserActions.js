@@ -1,3 +1,5 @@
+import _ from 'lodash';
+import { Actions } from 'react-native-router-flux';
 import { FETCH_USER, FETCH_USER_SUCCESS, FETCH_USER_FAILURE } from './types';
 
 export function fetchUserFromAPI() {

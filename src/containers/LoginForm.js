@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, Image, View } from 'react-native';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 import {
@@ -36,6 +36,22 @@ class LoginForm extends Component {
   render() {
     return (
       <Card>
+        <View
+          style={{
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
+          <Image
+            style={{
+              height: 200,
+              width: 200
+            }}
+            source={require('../img/pizza.jpg')}
+          />
+        </View>
+
         <CardSection>
           <Input
             label="Email"
@@ -72,6 +88,11 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red'
+  },
+  loginImage: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row'
   }
 };
 

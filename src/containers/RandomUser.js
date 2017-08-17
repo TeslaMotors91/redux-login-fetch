@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchUserFromAPI } from '../actions';
+import { Actions } from 'react-native-router-flux';
 
 class RandomUser extends Component {
   render() {
@@ -18,11 +19,14 @@ class RandomUser extends Component {
         {user.length
           ? user.map((_user, index) => {
               return (
-                <View key={index}>
+                <View key={index} style={{ padding: 4 }}>
                   <Text>
                     Gender: {_user.gender}
                   </Text>
-                  <Text>
+                  <Text
+                    onPress={() =>
+                      Actions.showUser({ _user, user: { ..._user } })}
+                  >
                     Name:
                     {`${_user.name.title} ${_user.name.first} ${_user.name
                       .last}`}
@@ -35,6 +39,19 @@ class RandomUser extends Component {
     );
   }
 }
+
+// return (
+//       <FlatList
+//         enableEmptySections
+//         data={this.props.data}
+//         keyExtractor={item => item.uid}
+//         renderItem={({ item }) => (
+//           <ListItem
+//             employeeName={item.name}
+//             onPress={() => Actions.employeeEdit({ employee: item })} />
+//         )}
+//       />
+// );
 
 const styles = StyleSheet.create({
   container: {
